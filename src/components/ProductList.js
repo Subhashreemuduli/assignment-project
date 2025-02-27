@@ -83,10 +83,26 @@ const ProductList = () => {
                   type="text"
                   placeholder="0"
                   className="border p-2 w-16 rounded"
+                  value={discounts[index]?.value}
+                  onChange={(e) =>
+                    setDiscounts((prev) => ({
+                      ...prev,
+                      [index]: { ...prev[index], value: e.target.value },
+                    }))
+                  }
                 />
-                <select className="border p-2 rounded">
-                  <option>flat off</option>
-                  <option>% off</option>
+                <select
+                  className="border p-2 rounded"
+                  value={discounts[index]?.type || "flat off"}
+                  onChange={(e) =>
+                    setDiscounts((prev) => ({
+                      ...prev,
+                      [index]: { ...prev[index], type: e.target.value },
+                    }))
+                  }
+                >
+                  <option value="flat off">flat off</option>
+                  <option value="% off">% off</option>
                 </select>
               </div>
             ) : (
